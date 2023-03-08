@@ -3,13 +3,14 @@ require './rental'
 
 class Book
   def initialize(title, author)
-      @title = title
-      @author = author
-      @rentals = []
+    @title = title
+    @author = author
+    @rentals = []
   end
   attr_accessor :title, :author
   attr_reader :rentals
 
   def add_rental(person, date = Date.today)
     @rentals.push(Rental.new(date, person, self))
+  end
 end
