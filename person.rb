@@ -1,7 +1,7 @@
-require_relative './nameable'
+require './nameable'
 
 class Person < Nameable
-  def initialize(age, name: 'Unknown', parent_permission: true)
+  def initialize(age, name = 'Unknown', parent_permission: true)
     super()
     @id = Random.rand(1..1000)
     @name = name
@@ -29,7 +29,7 @@ class Person < Nameable
   end
 end
 
-person1 = Person.new(12, name: 'Andre', parent_permission: false)
+person1 = Person.new(12, 'Andre')
 puts person1.name
 puts person1.age
 puts person1.id

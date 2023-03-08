@@ -1,8 +1,8 @@
-require_relative './person'
+require './person'
 
 class Teacher < Person
-  def initialize(age, specialization, name: 'Unknown', parent_permission: true)
-    super(age, name: name, parent_permission: parent_permission)
+  def initialize(age, specialization, name = 'Unknown', parent_permission: true)
+    super(age, name)
     @specialization = specialization
   end
 
@@ -13,7 +13,7 @@ class Teacher < Person
   end
 end
 
-teacher1 = Teacher.new(43, 'Masters', name: 'Alejandra')
+teacher1 = Teacher.new(43, 'Masters', 'Alejandra')
 puts teacher1.name
 puts teacher1.age
 puts teacher1.specialization
