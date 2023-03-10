@@ -36,7 +36,7 @@ class App
   def run
     loop do
       menu
-      option = gets.chomp
+      option = gets.chomp.to_i
       action = ACTIONS[option]
 
       if action == :break
