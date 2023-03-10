@@ -119,6 +119,15 @@ class App
   end
 
   def list_rentals
-    puts 'List all rentals for a given person id'
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    puts 'Rentals:'
+    @people.each do |person|
+      next unless person.id == id
+
+      person.rentals.each do |rental|
+        puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
+      end
+    end
   end
 end
