@@ -76,12 +76,10 @@ class App
       name = gets.chomp.to_s
       print 'Has parent permission? [Y/N]: '
       permission = gets.chomp.to_s
-      if permission.capitalize == 'N'
-        @people.push(Student.new(age, name: name, permission: false))
-      else
-        @people.push(Student.new(age, name: name))
-      end
+      permission = permission.downcase == 'y'
+      student = Student.new(age, name, permission)
       puts 'Person created successfully'
+      @people.push(student)
     when 2
       print 'Age: '
       age = gets.chomp.to_i
