@@ -44,10 +44,13 @@ class App
       end
     end
   end
-end
 
 def list_books
-  puts 'list books'
+  if @books.empty?
+    puts 'No books found'
+  else
+    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+  end
 end
 
 def list_people
@@ -68,4 +71,5 @@ end
 
 def list_rentals
   puts 'List all rentals for a given person id'
+end
 end
