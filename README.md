@@ -93,7 +93,7 @@ $ bundle init
 
 $ bundle install (install dependencies)
 
-$ ruby person.rb (run the app locally)
+$ ruby main.rb (run the app locally)
 ```
 ### Usage
 
@@ -113,6 +113,14 @@ This website is applicable for both mobile and desktop version.
 - LinkedIn: [alejandra-keber](www.linkedin.com/in/alejandra-keber)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **[Refactor the code applying Ruby best practices]**
+- [ ] **[Preserve data into JSON files]**
+- [ ] **[Unit tests using Rspec]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
