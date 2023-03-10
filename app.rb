@@ -1,3 +1,7 @@
+require './book'
+require './student'
+require './teacher'
+
 ACTIONS = {
   1 => :list_books,
   2 => :list_people,
@@ -45,31 +49,62 @@ class App
     end
   end
 
-def list_books
-  if @books.empty?
-    puts 'No books found'
-  else
-    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+  def list_books
+    if @books.empty?
+      puts 'No books found'
+    else
+      @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+    end
   end
-end
 
-def list_people
-  puts 'list people'
-end
+  def list_people
+    if @people.empty?
+      puts 'No people found'
+    else
+      @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+    end
+  end
 
-def create_person
-  puts 'create person'
-end
+  def create_person
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    option = gets.chomp.to_i
+    case option
+    when 1
+      print 'Age: '
+      age = gets.chomp.to_i
+      print 'Name: '
+      name = gets.chomp.to_s
+      print 'Has parent permission? [Y/N]: '
+      permission = gets.chomp.to_s
+      if permission.capitalize == 'N'
+        @people.push(Student.new(age, name: name, permission: false))
+      else
+        @people.push(Student.new(age, name: name))
+      end
+      puts 'Person created successfully'
+    when 2
+      print 'Age: '
+      age = gets.chomp.to_i
+      print 'Name: '
+      name = gets.chomp.to_s
+      print 'Specialization: '
+      specialization = gets.chomp.to_s
+      @people.push(Teacher.new(age, specialization, name: name))
+      puts 'Person created successfully'
+    else
+      puts 'Invalid input, please try again'
+    end
+  end
 
-def create_book
-  puts 'create book'
-end
+  def create_book
+    puts 'create book'
+  end
 
-def create_rental
-  puts 'create a rental '
-end
+  def create_rental
+    puts 'create a rental '
+  end
 
-def list_rentals
-  puts 'List all rentals for a given person id'
-end
+  def list_rentals
+    puts 'List all rentals for a given person id'
+  end
 end
