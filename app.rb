@@ -1,3 +1,4 @@
+require 'pry'
 require './book'
 require './student'
 require './teacher'
@@ -35,7 +36,7 @@ class App
   def run
     loop do
       menu
-      option = gets.chomp.to_i
+      option = gets.chomp
       action = ACTIONS[option]
 
       if action == :break
