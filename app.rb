@@ -95,7 +95,12 @@ class App
   end
 
   def create_book
-    puts 'create book'
+    print 'Title: '
+    title = gets.chomp.to_s
+    print 'Author: '
+    author = gets.chomp.to_s
+    @books.push(Book.new(title, author))
+    puts 'Book created successfully'
   end
 
   def create_rental
