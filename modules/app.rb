@@ -4,6 +4,7 @@ require_relative './teacher'
 require_relative './menu'
 require_relative './data_persistance'
 require 'pry'
+require 'json'
 
 ACTIONS = {
   1 => :list_books,
@@ -20,8 +21,8 @@ class App
 
   def initialize
     puts 'Welcome to School Library App!'
-    @books = []
-    @people = []
+    @books = load_books
+    @people = load_people
     @rentals = []
   end
 
@@ -32,10 +33,7 @@ class App
       action = ACTIONS[option]
 
       if action == :break
-        dp = DataPersistance.new
-        dp.save('books', JSON.generate(@books))
-        dp.save('people', JSON.generate(@people))
-        dp.save('rentals', JSON.generate(@rentals))
+        save
         puts 'Thank you for using this app!'
         break
       elsif action
@@ -125,6 +123,34 @@ class App
       person.rentals.each do |rental|
         puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
+    end
+  end
+
+  private
+
+  def save
+    File.write('people.json', JSON.generate(@people))
+    File.write('books.json', JSON.generate(@books))
+    File.write('rentals.json', JSON.generate(@rentals))
+  end
+
+  def load_people
+    return [] unless File.file?('people.json')
+
+    JSON.parse(File.read('people.json')).map do |person|
+      if person['json_class'] == 'Student'
+        Student.new(person['age'], person['name'], person['parent_permission'])
+      elsif person['json_class'] == 'Teacher'
+        Teacher.new(person['age'], person['specialization'], person['name'], person['parent_permission'])
+      end
+    end
+  end
+
+  def load_books
+    return [] unless File.file?('books.json')
+
+    JSON.parse(File.read('books.json')).map do |book|
+      Book.new(book['title'], book['author'])
     end
   end
 end
