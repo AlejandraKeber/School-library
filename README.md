@@ -112,13 +112,19 @@ This website is applicable for both mobile and desktop version.
 - Twitter: [@KeberAlejandra](https://twitter.com/KeberAlejandra)
 - LinkedIn: [alejandra-keber](www.linkedin.com/in/alejandra-keber)
 
+👤 **Victor Gonzalez**
+
+- GitHub: [@Vgonma](https://github.com/Vgonma)
+- Twitter: [@Victor_GonMa](https://twitter.com/Victor_GonMa)
+- LinkedIn: [Victor Manuel Gonzalez Massimi](https://www.linkedin.com/in/victor-gonzalez-massimi/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Refactor the code applying Ruby best practices]**
+- [x] **[Refactor the code applying Ruby best practices]**
 - [ ] **[Preserve data into JSON files]**
 - [ ] **[Unit tests using Rspec]**
 
