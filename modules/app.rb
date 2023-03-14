@@ -1,8 +1,7 @@
-require 'pry'
-require './book'
-require './student'
-require './teacher'
-require './menu'
+require_relative './book'
+require_relative './student'
+require_relative './teacher'
+require_relative './menu'
 
 ACTIONS = {
   1 => :list_books,

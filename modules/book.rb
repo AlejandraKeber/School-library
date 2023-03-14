@@ -1,5 +1,5 @@
 require 'date'
-require './rental'
+require_relative './rental'
 
 class Book
   def initialize(title, author)

@@ -1,6 +1,6 @@
-require './nameable'
+require_relative './nameable'
 require 'date'
-require './rental'
+require_relative './rental'
 
 class Person < Nameable
   def initialize(age, name, parent_permission)
