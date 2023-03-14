@@ -2,6 +2,8 @@ require_relative './book'
 require_relative './student'
 require_relative './teacher'
 require_relative './menu'
+require_relative './data_persistance'
+require 'pry'
 
 ACTIONS = {
   1 => :list_books,
@@ -30,6 +32,10 @@ class App
       action = ACTIONS[option]
 
       if action == :break
+        dp = DataPersistance.new
+        dp.save('books', JSON.generate(@books))
+        dp.save('people', JSON.generate(@people))
+        dp.save('rentals', JSON.generate(@rentals))
         puts 'Thank you for using this app!'
         break
       elsif action
@@ -105,7 +111,7 @@ class App
     person_index = gets.chomp.to_i
     print 'Date: '
     date = gets.chomp
-    Rental.new(date, @people[person_index], @books[book_index])
+    @rentals.push(Rental.new(date, @people[person_index], @books[book_index]))
     puts 'Rental created successfully'
   end
 
