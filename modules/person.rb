@@ -1,8 +1,11 @@
-require './nameable'
+require_relative './nameable'
 require 'date'
-require './rental'
+require_relative './rental'
 
 class Person < Nameable
+  attr_accessor :name, :age
+  attr_reader :id, :rentals
+
   def initialize(age, name, parent_permission)
     super()
     @id = Random.rand(1..1000)
@@ -11,8 +14,6 @@ class Person < Nameable
     @parent_permission = parent_permission
     @rentals = []
   end
-  attr_accessor :name, :age
-  attr_reader :id, :rentals
 
   private
 
