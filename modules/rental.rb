@@ -1,4 +1,3 @@
-require 'pry'
 class Rental
   attr_accessor :date, :person, :book
 
