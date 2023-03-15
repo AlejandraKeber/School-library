@@ -10,6 +10,6 @@ class DataPersistance
 
     json_data = JSON.generate(data)
     File.write("#{name}.json", json_data)
-    return true
+    true
   end
 end

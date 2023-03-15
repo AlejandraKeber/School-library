@@ -158,10 +158,9 @@ class App
     return [] unless File.file?('rentals.json')
 
     JSON.parse(File.read('rentals.json')).map do |rental|
-      person = @people.select { |person| person.name == rental['person']['name'] }
-      book = @books.select { |book| book.title == rental['book']['title'] }
-      binding.pry
-      Rental.new(rental['date'], person, book)
+      person = @people.select { |psn| psn.name == rental['person']['name'] }
+      book = @books.select { |bk| bk.title == rental['book']['title'] }
+      Rental.new(rental['date'], person[0], book[0])
     end
   end
 end

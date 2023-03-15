@@ -1,3 +1,4 @@
+require 'pry'
 class Rental
   attr_accessor :date, :person, :book
 
@@ -14,7 +15,7 @@ class Rental
       JSON.create_id => self.class.name,
       'date' => date,
       'person' => person,
-      'book' => book,
+      'book' => book
     }.to_json(*args)
   end
 end
