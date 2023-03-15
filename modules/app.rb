@@ -23,7 +23,7 @@ class App
     puts 'Welcome to School Library App!'
     @books = load_books
     @people = load_people
-    @rentals = []
+    @rentals = load_rentals
   end
 
   def run
@@ -141,7 +141,7 @@ class App
       if person['json_class'] == 'Student'
         Student.new(person['age'], person['name'], person['parent_permission'])
       elsif person['json_class'] == 'Teacher'
-        Teacher.new(person['age'], person['specialization'], person['name'], person['parent_permission'])
+        Teacher.new(person['age'], person['specialization'], name: person['name'])
       end
     end
   end
@@ -151,6 +151,17 @@ class App
 
     JSON.parse(File.read('books.json')).map do |book|
       Book.new(book['title'], book['author'])
+    end
+  end
+
+  def load_rentals
+    return [] unless File.file?('rentals.json')
+
+    JSON.parse(File.read('rentals.json')).map do |rental|
+      person = @people.select { |person| person.name == rental['person']['name'] }
+      book = @books.select { |book| book.title == rental['book']['title'] }
+      binding.pry
+      Rental.new(rental['date'], person, book)
     end
   end
 end
