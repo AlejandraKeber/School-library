@@ -1,6 +1,7 @@
 require_relative './nameable'
 require 'date'
 require_relative './rental'
+require 'json'
 
 class Person < Nameable
   attr_accessor :name, :age

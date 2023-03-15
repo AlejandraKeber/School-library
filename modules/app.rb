@@ -3,7 +3,6 @@ require_relative './student'
 require_relative './teacher'
 require_relative './menu'
 require_relative './data_persistance'
-require 'pry'
 require 'json'
 
 ACTIONS = {
