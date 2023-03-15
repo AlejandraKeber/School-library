@@ -1,5 +1,6 @@
 require 'date'
 require_relative './rental'
+require 'json'
 
 class Book
   attr_accessor :title, :author
